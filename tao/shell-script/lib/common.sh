@@ -157,14 +157,14 @@ function print_help(){
 
 function deploy() {
   if [[ "$deploymentMode" == "auto" ]] ; then
-    echo "aws glue create-table --cli-input-json file://${cli_input_json_dir}/athena-table.json"
-    aws glue create-table --cli-input-json file://${cli_input_json_dir}/athena-table.json
-    echo "aws quicksight create-data-source --aws-account-id ${account} --cli-input-json file://${cli_input_json_dir}/data-source-input.json"
-    aws quicksight create-data-source --aws-account-id ${account} --cli-input-json file://${cli_input_json_dir}/data-source-input.json
-    echo "aws quicksight create-data-set --aws-account-id ${account} --cli-input-json file://${cli_input_json_dir}/data-set-input.json"
-    aws quicksight create-data-set --aws-account-id ${account} --cli-input-json file://${cli_input_json_dir}/data-set-input.json
-    echo "aws quicksight create-dashboard --aws-account-id ${account} --cli-input-json file://${cli_input_json_dir}/dashboard-input.json"
-    aws quicksight create-dashboard --aws-account-id ${account} --cli-input-json file://${cli_input_json_dir}/dashboard-input.json
+    echo "aws glue create-table --region ${region} --cli-input-json file://${cli_input_json_dir}/athena-table.json"
+    aws glue create-table --region ${region} --cli-input-json file://${cli_input_json_dir}/athena-table.json
+    echo "aws quicksight create-data-source --region ${region} --aws-account-id ${account} --cli-input-json file://${cli_input_json_dir}/data-source-input.json"
+    aws quicksight create-data-source --region ${region} --aws-account-id ${account} --cli-input-json file://${cli_input_json_dir}/data-source-input.json
+    echo "aws quicksight create-data-set --region ${region} --aws-account-id ${account} --cli-input-json file://${cli_input_json_dir}/data-set-input.json"
+    aws quicksight create-data-set --region ${region} --aws-account-id ${account} --cli-input-json file://${cli_input_json_dir}/data-set-input.json
+    echo "aws quicksight create-dashboard --region ${region} --aws-account-id ${account} --cli-input-json file://${cli_input_json_dir}/dashboard-input.json"
+    aws quicksight create-dashboard --region ${region} --aws-account-id ${account} --cli-input-json file://${cli_input_json_dir}/dashboard-input.json
     if [ $? -ne 0 ]
     then
        echo \"Something went wrong\"
@@ -173,30 +173,30 @@ function deploy() {
     status
   else
        echo "Please run the following commands to deploy dashboard:
-       aws glue create-table --cli-input-json file://${cli_input_json_dir}/athena-table.json
-       aws quicksight create-data-source --aws-account-id ${account} --cli-input-json file://${cli_input_json_dir}/data-source-input.json
-       aws quicksight create-data-set --aws-account-id ${account} --cli-input-json file://${cli_input_json_dir}/data-set-input.json
-       aws quicksight create-dashboard --aws-account-id ${account} --cli-input-json file:/${cli_input_json_dir}/dashboard-input.json
+       aws glue create-table --region ${region} --cli-input-json file://${cli_input_json_dir}/athena-table.json
+       aws quicksight create-data-source --region ${region} --aws-account-id ${account} --cli-input-json file://${cli_input_json_dir}/data-source-input.json
+       aws quicksight create-data-set --region ${region} --aws-account-id ${account} --cli-input-json file://${cli_input_json_dir}/data-set-input.json
+       aws quicksight create-dashboard --region ${region} --aws-account-id ${account} --cli-input-json file:/${cli_input_json_dir}/dashboard-input.json
          "
   fi
 }
 
 function delete() {
   if [[ "$deploymentMode" == "auto" ]] ; then
-    echo "aws glue delete-table --database-name ${databaseName} --name ta_organizational_view_reports"
-    aws glue delete-table --database-name ${databaseName} --name ta_organizational_view_reports
-    echo "aws quicksight delete-data-source --aws-account-id ${account} --data-source-id ta-organizational-view"
-    aws quicksight delete-data-source --aws-account-id ${account} --data-source-id ta-organizational-view
-    echo "aws quicksight delete-data-set --aws-account-id ${account} --data-set-id ta-organizational-view"
-    aws quicksight delete-data-set --aws-account-id ${account} --data-set-id ta-organizational-view
-    echo "aws quicksight delete-dashboard --aws-account-id ${account} --dashboard-id ta-organizational-view"
-    aws quicksight delete-dashboard --aws-account-id ${account} --dashboard-id ta-organizational-view
+    echo "aws glue delete-table --region ${region} --database-name ${databaseName} --name ta_organizational_view_reports"
+    aws glue delete-table --region ${region} --database-name ${databaseName} --name ta_organizational_view_reports
+    echo "aws quicksight delete-data-source --region ${region} --aws-account-id ${account} --data-source-id ta-organizational-view"
+    aws quicksight delete-data-source --region ${region} --aws-account-id ${account} --data-source-id ta-organizational-view
+    echo "aws quicksight delete-data-set --region ${region} --aws-account-id ${account} --data-set-id ta-organizational-view"
+    aws quicksight delete-data-set --region ${region} --aws-account-id ${account} --data-set-id ta-organizational-view
+    echo "aws quicksight delete-dashboard --region ${region} --aws-account-id ${account} --dashboard-id ta-organizational-view"
+    aws quicksight delete-dashboard --region ${region} --aws-account-id ${account} --dashboard-id ta-organizational-view
   else
     echo "Please run the following commands to delete dashboard:
-    aws glue delete-table --database-name ${databaseName} --name ta_organizational_view_reports
-    aws quicksight delete-data-source --aws-account-id ${account} --data-source-id ${dataSourceId}
-    aws quicksight delete-data-set --aws-account-id ${account} --data-set-id ${dataSetId}
-    aws quicksight delete-dashboard --aws-account-id ${account} --dashboard-id ${dashboardId}
+    aws glue delete-table --region ${region} --database-name ${databaseName} --name ta_organizational_view_reports
+    aws quicksight delete-data-source --region ${region} --aws-account-id ${account} --data-source-id ${dataSourceId}
+    aws quicksight delete-data-set --region ${region} --aws-account-id ${account} --data-set-id ${dataSetId}
+    aws quicksight delete-dashboard --region ${region} --aws-account-id ${account} --dashboard-id ${dashboardId}
       "
   fi
 }
