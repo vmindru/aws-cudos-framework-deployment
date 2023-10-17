@@ -1,5 +1,164 @@
 # What's new in CUDOS Dashboard
 
+## CUDOS - 4.79
+* **Data Transfer and Networking**: Added 'Public IPv4 addresses' section with 'Public IPv4 Cost and Projection (Last 30 days)', 'Public IPv4 Cost and Projection per Account (Last 30 days)' and 'Public IPv4 ENIs and Elastic IPs used more than 1 hr (Last 30 days)' visuals allowing to estimate cost impact for [Public IPv4 charges effective from February 1, 2024](https://aws.amazon.com/blogs/aws/new-aws-public-ipv4-address-charge-public-ip-insights/) and monitor cost of idle Elastic IP addresses 
+* **Compute**: Added section 'Amazon EC2 Spot Instances Savings' with best practices recommendations for Spot tools and usage optimization. Added visual 'EC2 Spot Savings Detailed View' which provides breakdown of Spot savings per platform, instance type, region and availability zone
+* **Compute**: Fix for 'TOP 20 "ECS Fargate", "EKS Fargate" and "EKS Control Plane" cost' visual 
+* **Compute**: Removed 'EC2 Coverage in Normalized Hours (Last 30 days)' as it duplicates details available in 'EC2 Compute Unit Cost and Normalized Hours by Purchase Option' visual excluding empty resource ids
+* **Databases** and **Monitoring and Observability**: Added references to [Cloud Financial Framework](https://catalog.workshops.aws/awscff/en-US) guidances in respective recommendations sections
+
+## CUDOS - 4.78.1
+* **Executive: Billing Summary**: Renamed label for Total bar to Amortized cost on *'Total Savings and Discounts details'* visual
+
+## CUDOS - 4.78.0
+* **Executive: Billing Summary**: Added '*Total Savings and Discounts details*' and '*Total Savings and Discounts, %*' visuals showing SP, RI, Spot savings, Refunds, Credits and Discounts in one place. '*Discounts Previous Month*' visual now shows also SP, RI, Spot savings and renamed to '*Savings and Discounts Previous Month: RI SP Savings, Spot Savings, Credits, Refunds, Others*'
+* **Messaging and Streaming** (formerly Message Brokers tab): Added visual '*Idle Amazon Kinesis Data Streams and Consumers*' which lists all idle Amazon Kinesis Data Streams and Consumers. Added breakdown by operation to '*TOP 20 Amazon Kinesis resources*' visual
+* **Executive: RI/SP Summary**: Added SP Commitment per Hour and SP Unused Commitment per Hour columns to '*Reserved Instance & Savings Plan Tracker*'
+* **Amazon DynamoDB**: '*Total DynamoDB Usage Cost Per Operation*' visual now includes RI covered capacity and shows breakdown by DynamoDB categories and renamed to '*DynamoDB Cost Per Category*'
+* **Amazon S3**: '*Daily Storage Bucket Explorer*' and '*Daily Cost Bucket Explorer*' visuals switched from previous 3 month filters to last 90 days to capture data from current month
+* **Data Transfer**: Daily visuals '*Data Transfer GB per Service*' and '*Data Transfer Daily GB per Operations*' switched from previous 3 month filters to last 90 days to capture data from current month. Added ability to drill down to operation and usage type for '*Data Transfer Costs per Type*' and '*Data Transfer GB per Service*' visuals
+
+## CUDOS - 4.77.0
+
+* OPTICS Explorer: Added 'Forecast Spend' visual allowing to forecast AWS spend by any dimension available in top level filters e.g. by particular Service, Operation, Region, Account etc.
+* Amazon S3: Fix for storage calculation in 'Daily Storage Bucket Explorer' visual
+* Data Transfer: Fix to exclude Direct Connect hourly charges from data transfer amount calculations
+* Storage: Fix to filter out empty values in 'TOP 20 EBS Volumes Previous Month' and 'TOP 20 EBS Snapshots Previous Month'
+
+## CUDOS - 4.76.1
+
+* Storage : Fix for 'EBS Storage Unit Cost' visual not showing data
+* Amazon S3: Added account tooltip to 'Total Cost per Bucket Previous Month by Operation' visual
+
+## CUDOS - 4.76.0
+
+* Databases and Compute: Added ability to switch between Instance Hours, Normalized Hours and Cost with the top level control 'Usage Unit’. Normalized Hours allows you to get more precise tracking of your usage taking into account size of the instances. Learn more about normalized hours in recommendations sections of each tab
+* Databases: Service Select control changed to multi-select allowing to focus on multiple services at once
+* Databases: New visuals 'RI Coverage per region | engine | instance type or family (for size flexible), 'Daily RI coverage' (with ability to set RI coverage goal for the reference), 'Total RI Coverage %'. These new visuals and also 'Database Daily Elasticity' and 'Daily Cost' visuals can be switched between Instance Hours, Normalized Hours and Cost with 'Usage Unit' control
+* Databases: Added ability to switch between Instance Family, Instance Type and Processor type with 'Group By' control 
+* Databases: 'Cost by Database Engines' visuals shows engines for all database services
+* Compute: 'EC2 Compute Unit Cost', 'EC2 Coverage by Purchase Option', 'EC2 Hours by Platform', 'EC2 Coverage (Last 30 days)', 'EC2 Daily Compute Unit Cost by Purchase Option' visuals can be switched between nstance Hours, Normalized Hours and Cost with 'Usage Unit' top level control
+* Compute: Added ability to switch between Instance Family, Instance Type and Processor type with 'Group By' control 
+* Compute: New visual 'EC2 Daily Compute Unit Cost and Usage'
+* Data Transfer: Update in Data Transfer types categorization logic to capture S3 to Direct Connect data transfer under 'Region to Direct Connect' category
+
+
+## CUDOS - 4.75
+
+* Databases: Added 'Daily Storage Cost' visual which shows detailed storage cost breakdown and can be used to track GP3 volumes adoption for Amazon RDS and OpenSearch 
+* MoM Trends: Added Payer Account to 'AWS Marketplace spend detailed view'
+* Data Transfer Summary: New visual 'Single-AZ VPC endpoints' which helps to asses reliability risks and consider to deploy production VPC endpoints in a several Availability Zones
+* Data Transfer Summary: Data Transfer types categorization logic so you have more precise breakdown of different data transfer types
+
+
+## CUDOS - 4.74
+
+* MoM Trends: Added AWS Marketplace section with visuals 'AWS Marketplace spend by Legal Entity' and 'AWS Marketplace spend detailed view'
+* MoM Trends: Added Control to filter by Legal Entity
+* Monitoring and Observability: Merged visuals 'TOP 10 CloudWatch Resources Previous Month' and 'TOP 10 CloudWatch Log Resources Previous Month' into 'TOP 10 CloudWatch Resources' and changed time interval to last 30 days
+* Monitoring and Observability: Added 'TOP 10 CloudWatch Resources Daily Cost' visual
+* OPTICS Explorer: Added ability to filter by 'Billing Entity' and 'Legal Entity'
+* Data Transfer Summary: S3 Transfer Acceleration added to Region to Internet data transfer type
+
+
+## CUDOS - 4.73
+
+* Compute Summary: 'Unused On-Demand Capacity Reservations Cost per Account' changed from monthly to daily aggregation for more granular visibility 
+* Billing Summary: Drill down to description on 'Discounts: Credits, Refunds, Others' now grouped by discount type 
+* End User Computing: Adjusted 'Cost Optimizer for Amazon WorkSpaces' solution name in Recommendations section
+
+## CUDOS - 4.72
+
+* Databases: Added ability to vizualise spend and usage for Amazon Neptune
+* Compute Summary: Added insights and recommendations to AWS Lambda Summary section with the links to respective documentation
+* RI/SP Summary: Added Cost line to ‘Avg. Hourly EC2 Cost by Pricing Model’ which allows to get total EC2 compute cost per hour
+
+
+## CUDOS - 4.71
+
+* Compute Summary: Changed  'On-Demand Capacity Reservations Usage Hours' visual to show data for Last 30 days instead of previous month so it displays current inventory and utilization of On-Demand Capacity Reservations
+* Monitoring and Observability: Added CloudWatch Synthetics and CloudWatch Metrics Steams to 'CloudWatch Usage Cost per Usage Type Group' visual
+* Monitoring and Observability: Added pricing unit and usage amount to 'TOP 10 CloudWatch Resources Previous Month' and 'TOP 10 CloudWatch Log Resources Previous Month' visuals
+
+
+## CUDOS - 4.70
+
+* Compute Summary: Added visuals 'Unused On-Demand Capacity Reservations Cost per Account' and 'On-Demand Capacity Reservations Usage Hours (Previous Month)'
+* Compute Summary: Combined visuals 'EC2 Instance Type Running Hours Cost' and 'EC2 Family Running Hours Cost' into 'EC2 Running Hours Cost by Purchase Option' and added ability to switch between Instance Family and Instance Type with 'Group By' control 
+* Compute Summary: Top 3 previous generation instances types Focus Area extended to top 5 added ability to switch between Instance Family and Instance Type with 'Group By' control 
+
+## CUDOS - 4.69.1
+
+* End User Computing: Added detailed description for Storage and Application Bundles in 'Workspaces spend per Bundle' and 'WorkSpaces Cost and Usage Top 20' vizuals
+
+## CUDOS - 4.69
+
+* Compute Summary: Added ability to choose service (ECS or EKS) for AWS Fargate visuals
+* Compute Summary: 'TOP 20 Fargate Clusters' visual renamed to 'TOP 20 "ECS Fargate", "EKS Fargate" and "EKS Control Plane" cost' and shows corresponding Fargate and EKS Cluster Control plane charges
+* End User Computing: Added 'Workspaces Count per Running Mode', 'Average Cost per WorkSpace','Average Usage for AutoStop WorkSpaces (hours)','Workspaces Count per Region','Workspaces spend per Bundle' and 'Average WorkSpaces cost per Region' visuals
+* End User Computing: Added Bundle description to 'WorkSpaces Cost and Usage Top 20' and 'Workspaces AutoStop with monthly usage over 80 hours' visuals
+
+
+## CUDOS - 4.68.1
+
+* RI/SP Summary: Fix filters for "Amortised Spend by Purchase Option and Savings (Potential Savings Eligible Workloads Only)" vizual to exclude services which can't be covered by RIs or SPs 
+
+## CUDOS - 4.68
+
+* Databases: Replaced "Database Instance Daily Elasticity by Purchase Option" with "Database Instance Hours Daily Elasticity by Purchase Option" and added a unit metric to the visual 
+
+## CUDOS - 4.67.3
+
+* MoM Trends: Updated charge_type filter
+
+## CUDOS - 4.67.2 
+
+* Storage Summary: Filters applied to daily visuals changed to last 90 days fron last 3 months
+* Payer and Account Name/ID controls now show only relevant values for respective control
+* OPTICS Explorer: Relative dates filter instead of Start/End dates
+
+## CUDOS - 4.67.1 
+
+* Amazon S3: Minor calculation accuracy fix for "TOP 5 Accounts for Glacier Vault migration to Glacier Deep Archive Savings Opportunity" via "S3 Glacier Deep Archive Estimated Cost" calculated field
+
+## CUDOS - 4.67
+
+* Monitoring and Observability: New visual "TOP 10 CloudWatch Log Resources Previous Month"; Various improvements to actions on cloudwatch visuals; removed Operation from "TOP 10 CloudWatch Resources Previous Month" visual
+
+## CUDOS - 4.66.3
+
+* Monitoring and Observability: New recommendations
+
+## CUDOS - 4.66.1
+
+* MoM Trends: Removed billing entity field from visual "MoM Trends by Product Code (AWS Marketplace items use product_name)", control left as is
+
+## CUDOS - 4.66
+
+* MoM Trends: Additional visibility and control in to billing entity origin AWS vs AWS Marketplace
+
+## CUDOS - 4.65
+
+* Data Transfer: Amazon CloudFront is now a separate Data Transfer Type category; New multi-select list for Data Transfer Types
+
+## CUDOS - 4.64.2
+
+* MoM Trends: Updated filters on all MoM trends visuals to match edge cases for Refunds and Credits 
+
+## CUDOS - 4.64.1
+
+* Databases: Updated filters on all Database visuals to match edge cases for Refunds and Credits 
+
+## CUDOS - 4.64
+
+* Compute Summary: Excluded charges for Dedicated Hosts from EC2 instance family and instance types visuals
+* Compute Summary: New visual ‘EC2 Spot Savings’
+* End User Computing: Updated recommendations for Workspaces Cost Optimizer solution new capability to delete unused workspaces which will reduce costs for customers by terminating the workspaces which have not been used for a month
+
+## CUDOS - 4.63.4
+
+* Databases: Fixed a filter on "Database Instance Daily Elasticity by Purchase Option" to include OpenSearch Instances
+
 ## CUDOS - 4.63.3
 
 * GameTech: Renamed "GameLift OnDemand Instance Types"(Monthly) to GameLift Costs by Instance Types; renamed "GameLift OnDemand Instance Types"(Daily) to "GameLift Instance Types Last 90 Days" and adjusted filters

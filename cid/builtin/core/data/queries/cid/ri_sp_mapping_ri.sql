@@ -18,11 +18,11 @@
      WHEN ("reservation_reservation_a_r_n" <> '') THEN "reservation_reservation_a_r_n"
      ELSE '' END "ri_sp_arn_mapping"
  , CASE 
- -- WHEN ("savings_plan_savings_plan_a_r_n" <> '') THEN CAST(from_iso8601_timestamp("savings_plan_end_time") AS timestamp)
-     WHEN ("reservation_reservation_a_r_n" <> '' AND "reservation_end_time" <> '') THEN CAST(from_iso8601_timestamp("reservation_end_time") AS timestamp) 
+ -- WHEN ("savings_plan_savings_plan_a_r_n" <> '') THEN CAST(CAST(from_iso8601_timestamp("savings_plan_end_time") AS date) AS timestamp)
+     WHEN ("reservation_reservation_a_r_n" <> '' AND "reservation_end_time" <> '') THEN CAST(CAST(from_iso8601_timestamp("reservation_end_time") AS date) AS timestamp)  
      ELSE NULL END "ri_sp_end_date"
     FROM
-     ${cur_table_name}
+     "${cur_table_name}"
     WHERE (
     ("line_item_line_item_type" = 'RIFee') 
  -- OR 
@@ -51,7 +51,7 @@
      WHEN ("reservation_reservation_a_r_n" <> '') THEN "pricing_purchase_option"
      ELSE '' END "ri_sp_Payment"
     FROM
-      ${cur_table_name}
+      "${cur_table_name}"
     WHERE (
     ("line_item_line_item_type" = 'DiscountedUsage') 
   -- OR 
